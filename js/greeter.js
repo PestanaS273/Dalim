@@ -10,8 +10,9 @@ class Greeter {
     this.clock = new SystemClock()
   }
 
-  greet () {
-    const currentHour = this.clock.currentHour()
+  greet(currentHour) {
+    currentHour = currentHour ?? this.clock.currentHour();
+
     if (currentHour >= 6 && currentHour < 12) {
       return 'Good morning'
     }
