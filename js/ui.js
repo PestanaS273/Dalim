@@ -18,9 +18,10 @@ class UI {
 
   mainLoop (basisInput, printFunction) {
     while (true) {
-      const input = this.interactor.readInput(basisInput ? basisInput.shift() : undefined)
+      const word = (basisInput && basisInput.length > 0) ? basisInput.shift() : undefined
+      const input = this.interactor.readInput(word)
       if (input === 'quit') {
-        break
+        break;
       }
       const reversed = reverse(input)
       this.interactor.printMessage(reversed, printFunction);
