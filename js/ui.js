@@ -12,9 +12,10 @@ class ConsoleInteractor {
 }
 
 class UI {
-  constructor () {
-    this.interactor = new ConsoleInteractor()
+  constructor (interactor) {
+    this.interactor = interactor
   }
+
 
   mainLoop () {
     while (true) {
