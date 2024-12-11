@@ -1,18 +1,17 @@
-const test = require('tape')
+const test = require('tape');
+const { UI } = require('../ui');
 
 test('main loop', (t) => {
-  /* TODO
-    Given the following inputs:
-    - hello
-    - oto
-    - quit
+  t.plan(3);
 
-    Check that the following messages are printed:
-    - olleh
-    - oto
-    - That was a palindrome!
-   */
+  const basisInput = ['hello', 'oto', 'quit']
+  const printedMessages = [];
+  const mockPrint = (message) => printedMessages.push(message)
 
-  t.fail('TODO')
-  t.end()
-})
+  const ui = new UI();
+  ui.mainLoop(basisInput, mockPrint);
+
+  t.equal(printedMessages[0], 'olleh', 'Reversed message for "hello" is correct');
+  t.equal(printedMessages[1], 'oto', 'Reversed message for "oto" is correct');
+  t.equal(printedMessages[2], 'That was a palindrome!', '"oto" is identified as a palindrome');
+});

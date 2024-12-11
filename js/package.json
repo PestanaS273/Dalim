@@ -16,6 +16,7 @@
     "tape": "^5.5.3"
   },
   "dependencies": {
+    "jest": "^29.7.0",
     "prompt-sync": "^4.2.0"
   }
 }
