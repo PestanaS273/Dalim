@@ -1,14 +1,30 @@
 const test = require('tape')
 const Greeter = require('../greeter').Greeter
 
+class MockClock {
+  constructor (hour) {
+    this.hour = hour
+  }
+
+  currentHour () {
+    return this.hour
+  }
+}
+
 test('should say "good night" at midnight', (t) => {
-  t.fail('TODO')
+  const greeter = new Greeter()
+  const mockClock = new MockClock(0)
+  greeter.clock = mockClock
+  t.equal(greeter.greet(), 'Good night')
   t.end()
 })
 
 test('should never return undefined', (t) => {
-  // TODO : for each hour from 0 to 23, check that Greeter.greet()
-  // never returns undefined
-  t.fail('TODO')
+  const greeter = new Greeter()
+  for (let i = 0; i < 24; i++) {
+    const mockClock = new MockClock(i)
+    greeter.clock = mockClock
+    t.notEqual(greeter.greet(), undefined)
+  }
   t.end()
 })
